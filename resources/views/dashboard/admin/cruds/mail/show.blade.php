@@ -4,14 +4,6 @@
 
 @section('content')
 
-@push('css')
-<style>
-    body {
-        overflow: hidden;
-    }
-</style>
-@endpush
-
 <div class="py-4 m-3">
 
     <section class="content-header">
@@ -38,33 +30,33 @@
         <!-- info row -->
         <div class="row invoice-info">
             <!-- /.col -->
-            <div class="col-8 invoice-col">
+            <div class="col-8 invoice-col box1">
 
                 <div class="text-md mt-3">
-                    <strong>Title:</strong>
-                    <article>{{$mail->title}}</article>
-                </div>
-
-                <div class="text-md mt-2">
-                    <strong>Content:</strong>
-                    <article>{{$mail->content}}</article>
+                    {{$mail->getTitle()}}
                 </div>
 
 
-                <div class="text-md mt-2">
-                    <strong>Name of newsletter:</strong>
-                    <article>{{$mail->newsletter->name}}</article>
+                <div class="text-md mt-3">
+                    
+                    <img width="250" height="300" src="{{ asset( "/storage/imgs/".$mail->getLogo())}}" alt="" srcset=""> 
+
+
                 </div>
 
-                <div class="text-md mt-2">
-                    <strong>Created at:</strong>
-                    <p>{{$mail->created_at}}</p>
+
+                <div class="text-md mt-3">
+                   <img width="250" height="300" src="{{ asset( "/storage/imgs/".$mail->getImage())}}" alt="" srcset=""> 
                 </div>
 
-                <div class="text-md mt-2">
-                    <strong>Updated at:</strong>
-                    <article>{{$mail->updated_at}}</article>
+                <div class="text-md mt-3">
+                    {!!$mail->getText() !!}
                 </div>
+
+                <div class="text-md mt-3">
+                      <a  class="btn btn-primary" href="{{$mail->getButton()}}">Button </a>
+                </div>
+               
 
 
                 <div class="text-left mt-3">
